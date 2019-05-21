@@ -18,7 +18,14 @@
     ```
   ./vendor/phing/phing/bin/phing -f ./build/production/build.xml -Dapp.destination.path=/Users/eugem/Developer/PHP/php-3HW02.prod -Dapp.domain=test.com -Dapp.db_driver=mysql -Dapp.db_user=eug -Dapp.db_password=123 -Dapp.db_host=php-3HW02.mac -Dapp.db_port=8889 -Dapp.db_name=php3hw02
   ```
-  параметры `-Dapp.destination.path` и `-Dapp.domain` должны быть обязательно указаны
+  Следующие параметры должны быть обязательно указаны:
+  * `-Dapp.destination.path`
+  * `-Dapp.db_driver`
+  * `-Dapp.db_user`
+  * `-Dapp.db_password`
+  * `-Dapp.db_host`
+  * `-Dapp.db_port`
+  * `-Dapp.db_name`
 * применена дополнительная настройка web-сервера nginx:
  <img src="/screens/nginx.png" width="50%">
 
