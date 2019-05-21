@@ -21,6 +21,7 @@
             <fileset dir="${project.basedir}">
                 <include name="**"/>
                 <exclude name="config/packages/myConfig.yaml"/>
+                <exclude name="build/production/.env.local"/>
                 <exclude name="screens/**"/>
                 <exclude name="build/**"/>
                 <exclude name="var/**"/>
@@ -36,6 +37,21 @@
             <filterchain>
                 <replacetokens begintoken="{{" endtoken="}}">
                     <token key="domain" value="${app.domain}"/>
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <copy todir="${app.destination.tmp.path}"
+              file="${project.basedir}/build/production/.env.local"
+              overwrite="true">
+            <filterchain>
+                <replacetokens begintoken="{{" endtoken="}}">
+                    <token key="db_driver" value="${app.db_driver}"/>
+                    <token key="db_user" value="${app.db_user}"/>
+                    <token key="db_password" value="${app.db_password}"/>
+                    <token key="db_host" value="${app.db_host}"/>
+                    <token key="db_port" value="${app.db_port}"/>
+                    <token key="db_name" value="${app.db_name}"/>
                 </replacetokens>
             </filterchain>
         </copy>
