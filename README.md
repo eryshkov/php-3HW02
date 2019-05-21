@@ -16,7 +16,7 @@
 * "настройка" для задания №1 хранится в файле [myConfig.yaml](/config/packages/myConfig.yaml) и он привязан к Container в файле [services.yaml](/config/services.yaml) в секции `bind:`
 * Скрипт сборки проекта должен запускаться примерно так:
     ```
-  php phing.phar -f ./build/production/build.xml -Dapp.destination.path=/Users/eugem/Developer/PHP/php-3HW02.prod -Dapp.domain=test.com -Ddb_driver=mysql -Ddb_user=eug -Ddb_password=123 -Ddb_host=php-3HW02.mac -Ddb_port=8889 -Ddb_name=php3hw02
+  ./vendor/phing/phing/bin/phing -f ./build/production/build.xml -Dapp.destination.path=/Users/eugem/Developer/PHP/php-3HW02.prod -Dapp.domain=test.com -Dapp.db_driver=mysql -Dapp.db_user=eug -Dapp.db_password=123 -Dapp.db_host=php-3HW02.mac -Dapp.db_port=8889 -Dapp.db_name=php3hw02
   ```
   параметры `-Dapp.destination.path` и `-Dapp.domain` должны быть обязательно указаны
 * применена дополнительная настройка web-сервера nginx:

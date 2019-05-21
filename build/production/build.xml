@@ -73,9 +73,9 @@
     </target>
 
     <target name="composer" depends="symlink">
-        <exec dir="${app.destination.current.path}" executable="composer" passthru="true">
-            <arg line="install"/>
-        </exec>
+        <!--<exec dir="${app.destination.current.path}" executable="composer" passthru="true">-->
+            <!--<arg line="install"/>-->
+        <!--</exec>-->
     </target>
 
 </project>
