@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="php-3HW01" default="composer" basedir=".">
+<project name="php-3HW01" default="loadFixtures" basedir=".">
     <tstamp>
         <format property="date_time" pattern="%Y-%m-%d-%H-%M-%S" timezone="Europe/Moscow"/>
     </tstamp>
@@ -73,9 +73,27 @@
     </target>
 
     <target name="composer" depends="symlink">
-        <!--<exec dir="${app.destination.current.path}" executable="composer" passthru="true">-->
-            <!--<arg line="install"/>-->
-        <!--</exec>-->
+        <exec dir="${app.destination.current.path}" executable="composer" passthru="true">
+        <arg line="install"/>
+        </exec>
+    </target>
+
+    <target name="makeMigrations" depends="composer">
+        <exec dir="${app.destination.current.path}/bin" executable="php" passthru="true">
+            <arg line="console"/>
+            <arg line="doctrine:migrations:migrate"/>
+            <arg line="--no-interaction"/>
+            <arg line="-vv"/>
+        </exec>
+    </target>
+
+    <target name="loadFixtures" depends="makeMigrations">
+        <exec dir="${app.destination.current.path}/bin" executable="php" passthru="true">
+            <arg line="console"/>
+            <arg line="doctrine:fixtures:load"/>
+            <arg line="--no-interaction"/>
+            <arg line="-vv"/>
+        </exec>
     </target>
 
 </project>
